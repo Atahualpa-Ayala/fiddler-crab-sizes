@@ -31,8 +31,8 @@ print(graph)
 
 crab_table <- pie_crab %>%
   group_by(site) %>%
-  summarise(mean = mean(size),
-            sd = sd(size),
+  summarise(mean = round(mean(size),2),
+            sd = round(sd(size), 2),
             count = n())
 
 crab_table %>%
