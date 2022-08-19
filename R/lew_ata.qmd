@@ -11,11 +11,11 @@ library(tidyverse)
 
 ```
 
-
 ```{r}
-graph <- ggplot(data = pie_crab, aes(y = latitude, x = water_temp)) +
+glimpse(pie_crab)
+
+graph <- ggplot(data = pie_crab, aes(x = latitude, y = size)) +
   geom_point()
+
 print(graph)
 ```
-
-
