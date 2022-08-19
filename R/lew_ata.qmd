@@ -6,26 +6,34 @@ editor: visual
 execute:
   echo: false
   warning: false
-
-
 ---
 
 ```{r}
 library(lterdatasampler)
 library(tidyverse)
+library(kableExtra)
 
 ```
 
 ```{r }
 #| fig-cap: "this is my caption" 
-glimpse(pie_crab)
-
 graph <- ggplot(data = pie_crab, aes(x = latitude, y = size)) +
   geom_point() 
 
-
 print(graph)
+```
 
+```{r}
+##making a kable table.
+#To your document, add an unfinalized summary table containing the mean, standard deviation, and sample size of fiddler crab carapace widths by site (tip: use round(mean(), 2) to round a value to 2 decimal places)
 
+crab_table <- pie_crab %>%
+  group_by(site) %>%
+  summarise(mean = mean(size),
+            sd = sd(size),
+            count = n())
 
+crab_table %>%
+  kbl() %>%
+  kable_styling()
 ```
